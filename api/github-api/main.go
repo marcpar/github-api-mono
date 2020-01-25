@@ -2,6 +2,11 @@ package main
 
 import "os"
 
+/*
+Everything here
+will be considered
+a block comment
+*/
 func main() {
 	a := App{}
 	a.Initialize(

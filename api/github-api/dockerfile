@@ -22,8 +22,11 @@ FROM buildimagesfortesting
 COPY  --from=builder /srv/githubapi /srv/githubapi 
 RUN go test
 
+## push the result somewhere go test (branch)  test result
 
 ############################
 # STEP 3 build a small image
 ############################
 FROM scratch
+COPY --from=build-env /go/bin/githubapi /go/bin/githubapi
+ENTRYPOINT [ "/go/bin/githubapi" ]
