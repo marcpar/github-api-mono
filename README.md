@@ -8,9 +8,14 @@ Use docker-compose [docker-compose](https://docs.docker.com/compose/) to run the
 
 devmode consist of auto refresh when you save your go code
 
+apply environment variable
+
+don't forget to add GITHUB_ACCESS_TOKEN in docker-compose
 
 ```bash
 cd api
+export GITHUB_ACCESS_TOKEN=<your-token>
+export $(egrep -v '^#' ./github-api/.env | xargs)
 docker-compose build
 docker-compose up -d
 ```
@@ -39,8 +44,7 @@ DB_PORT=5432
 
 to see the code running execute these commands
 ```bash
-cd /api
-export $(egrep -v '^#' ./github-api/.env | xargs)
+cd 
 docker-compose logs -f
 ```
 
