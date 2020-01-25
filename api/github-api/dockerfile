@@ -1,1 +1,29 @@
-FROM golang:1.13.6-alpine3.11
+############################
+# STEP 1 build executable binary
+############################
+
+FROM golang:1.13.6-alpine3.11 as builder
+RUN mkdir -p /srv/githubapi
+WORKDIR /srv/githubapi
+
+COPY go.mod .
+COPY go.sum .
+
+RUN go mod download
+COPY ..
+
+RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -a -installsuffix cgo -o /go/bin/githubapi
+
+############################
+# STEP 2 Unit testing
+############################
+FROM buildimagesfortesting
+
+COPY  --from=builder /srv/githubapi /srv/githubapi 
+RUN go test
+
+
+############################
+# STEP 3 build a small image
+############################
+FROM scratch
