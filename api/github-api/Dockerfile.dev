@@ -1,6 +1,7 @@
 FROM golang:1.13.6-alpine3.11
 
-RUN apk update && apk upgrade && \
+RUN set -ex; \
+    apk update && apk upgrade && \
     apk add --no-cache bash git openssh
 
 RUN go get -u github.com/cosmtrek/air

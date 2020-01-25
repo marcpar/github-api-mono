@@ -1,21 +1,26 @@
 package main
 
-//TODO issue  request
-
-// type Github struct {
-// 	URL *string
-// }
-
-func ListGithubUrl() {
+//TODO list Organization
+func (a *App) listGithubOrg() {
 
 }
 
-// func createGithubOrg() error {
-// 	response, err := http.Get(URL)
-// 	if err != nil {
-// 		fmt.Printf("The HTTP request failed with error %s\n", err)
-// 	} else {
-// 		data, _ := ioutil.ReadAll(response.Body)
-// 		fmt.Println(string(data))
-// 	}
-// }
+// TODO:Creating a Github organization
+func (a *App) createOrg() {
+
+}
+
+// TODO: Persisting Github comments against a given Github organization
+func (a *App) writeCommentOrg() {
+
+}
+
+// TODO: Returning an array of all the comments that have been registered against a Github organization
+func (a *App) listCommentOrg() {
+
+}
+
+// TODO: Returning an array of members of an organization
+func (a *App) ListGithubUrl() {
+
+}

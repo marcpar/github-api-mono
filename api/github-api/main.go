@@ -41,5 +41,6 @@ func main() {
 		environment.DatabaseHost,
 		environment.DatabaseName)
 
+	a.IntializeModel()
 	a.Run(":8080")
 }

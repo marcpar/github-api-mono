@@ -1,5 +1,5 @@
 version: "3.6"
-
+# ADD your github keys here or export ACCESS_TOKEN={your_accesstoken}
 services:
   github-api:
     build:

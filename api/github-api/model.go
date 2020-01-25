@@ -1,19 +1,19 @@
 package main
 
+import "time"
+
 type Comment struct {
 	Id         int `gorm:"primary_key"`
 	OrgId      string
 	Githubuser string
 	Comment    string
-	DeletedAt  bool
+	DeletedAt  *time.Time
+	CreatedAt  time.Time
 }
 
 type Comments []Comment
 
-func (a *App) intializeModel() {
+func (a *App) IntializeModel() {
 	db := a.DB
-	db.CreateTable(&Comment{})
-	// Also some useful functions
-	db.HasTable(&Comment{})          // =>;; true
-	db.DropTableIfExists(&Comment{}) //Drops the table if already exists
+	db.AutoMigrate(&Comment{})
 }
