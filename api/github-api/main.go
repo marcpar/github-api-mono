@@ -17,7 +17,7 @@ type Environment struct {
 	DatabaseHost     string `env:"DATABASE_HOST"`
 	DatabaseName     string `env:"POSTGRES_DB"`
 	Prod             bool   `env:"PROD"`
-	Extras           env.EnvSet
+	AccessToken      string `env:"GITHUB_ACCESS_TOKEN"`
 }
 
 // This is where I initialize the application

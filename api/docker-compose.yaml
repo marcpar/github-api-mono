@@ -9,6 +9,7 @@ services:
     volumes:
       - ./github-api:/srv/github-api
     environment:
+      - ACCESS_TOKEN=${GITHUB_ACCESS_TOKEN}
       - POSTGRES_USER=${DB_USER}  
       - POSTGRES_PASSWORD=${DB_PASSWORD}
       - POSTGRES_DB=${DB_NAME}

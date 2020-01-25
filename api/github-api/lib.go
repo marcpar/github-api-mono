@@ -6,7 +6,10 @@ package main
 // 	URL *string
 // }
 
-// //
+func ListGithubUrl() {
+
+}
+
 // func createGithubOrg() error {
 // 	response, err := http.Get(URL)
 // 	if err != nil {
