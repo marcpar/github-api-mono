@@ -8,14 +8,39 @@ Use docker-compose [docker-compose](https://docs.docker.com/compose/) to run the
 
 devmode consist of auto refresh when you save your go code
 
+
 ```bash
 cd api
 docker-compose build
 docker-compose up -d
 ```
+### PG Admin 
 
-to see the code running
+Can be access in localhost:5050
+
+### Credential can be seen in 
+
+/api/github-api/.env
+
+```echo
+# Used by pgadmin service 
+PGADMIN_DEFAULT_EMAIL=test@test
+PGADMIN_DEFAULT_PASSWORD=password
+
+# Postgres Test
+DB_HOST=postgres_test                      
+DB_HOST=db                     # when running the app without docker 
+DB_USER=marc
+DB_PASSWORD=password
+DB_NAME=github
+DB_PORT=5432
+```
+
+
+to see the code running execute these commands
 ```bash
+cd /api
+export $(egrep -v '^#' ./github-api/.env | xargs)
 docker-compose logs -f
 ```
 
