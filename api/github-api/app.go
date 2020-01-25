@@ -12,7 +12,8 @@ type App struct {
 	DB     *gorm.DB
 }
 
-func (a *App) Initialize(user, password, dbname string) {
+//Initialize is to set the Env variable to connect to DB
+func (a *App) Initialize(user, password, hostname, dbname string) {
 	db, err := gorm.Open("postgres", "user=gorm dbname=gorm sslmode=disable")
 	defer db.Close()
 	if err != nil {
