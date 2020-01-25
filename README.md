@@ -75,6 +75,11 @@ for the deployment for the api I use helm script to template the deployment
 
 for each api folder contains manifest folder where your content for deployment are and use CI/CD tools to deploy your application
 
+```bash
+cd api/github-api
+helm install manifest 
+```
+
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
