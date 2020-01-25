@@ -19,8 +19,20 @@ to see the code running
 docker-compose logs -f
 ```
 
-go test 
+## Testing in Go
 
+Use this test your go 
+
+```GO
+    cd api/github-api
+    go test 
+```
+## Documentation of a package
+
+```go
+   cd api/github-api
+   go docs
+```
 
 ## Usage
 
@@ -32,10 +44,7 @@ go test
 
 for the deployment for the api I use helm script to template the deployment
 
-for each api folder contains manifest folder where your content for deployment are
-```bash
-docker-compose logs -f
-```
+for each api folder contains manifest folder where your content for deployment are and use CI/CD tools to deploy your application
 
 
 ## Contributing
