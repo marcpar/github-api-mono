@@ -1,6 +1,11 @@
 package main
 
-import "time"
+import (
+	"errors"
+	"time"
+
+	"github.com/jinzhu/gorm"
+)
 
 type Comment struct {
 	Id         int `gorm:"primary_key"`
@@ -13,7 +18,18 @@ type Comment struct {
 
 type Comments []Comment
 
-func (a *App) IntializeModel() {
-	db := a.DB
+//Create automigrate this creates the Comment model without
+func IntializeModel(db *gorm.DB) {
+
 	db.AutoMigrate(&Comment{})
+}
+
+//Create comment
+func (c *Comment) CreateComment(db *gorm.DB) error {
+	return errors.New("Not implemented")
+}
+
+//delete comment softdelete
+func (c *Comment) DeleteComment(db *gorm.DB) error {
+	return errors.New("Not implemented")
 }

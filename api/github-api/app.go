@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"net/http"
 
 	"github.com/gorilla/mux"
 	"github.com/jinzhu/gorm"
@@ -19,7 +20,7 @@ type App struct {
 func (a *App) Initialize(user, password, hostname, dbname string) {
 	//Generates a connection string to DB
 	db, err := gorm.Open("postgres", fmt.Sprintf("user=%s password=%s host=%s  port=5432 dbname=%s sslmode=disable", user, password, hostname, dbname))
-	defer db.Close()
+	//defer db.Close()
 	if err != nil {
 		log.Error("Connection Failed to Open")
 		panic(err)
@@ -29,10 +30,12 @@ func (a *App) Initialize(user, password, hostname, dbname string) {
 
 	//
 	a.Router = mux.NewRouter()
-
+	a.initializeRoutes()
 }
 
-func (a *App) Run(addr string) {}
+func (a *App) Run(addr string) {
+	log.Error(http.ListenAndServe(":8080", a.Router))
+}
 
 // TEST: 2. Persisting Github comments against a given Github organization
 // TEST: 3. Returning an array of all the comments that have been registered against a Github organization

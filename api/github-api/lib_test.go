@@ -2,9 +2,29 @@ package main
 
 import (
 	"net/http"
+	"net/http/httptest"
+	"os"
 	"testing"
+	"."
 )
 
+var a main.App
+
+func TestMain(m *testing.M) {
+	a = main.App{}
+	a.Initialize(
+		os.Getenv("TEST_DB_USERNAME"),
+		os.Getenv("TEST_DB_PASSWORD"),
+		os.Getenv("TEST_DB_NAME"))
+
+	ensureTableExists()
+
+	code := m.Run()
+
+	clearTable()
+
+	os.Exit(code)
+}
 
 // TEST: 1. Creating a Github organization
 func TestCreateOrganization(t *testing.T) {
@@ -21,22 +41,22 @@ func TestCreateOrganization(t *testing.T) {
 }
 
 // TEST: 2. Persisting Github comments against a given Github organization
-func TestCreateComments(t *testing.T){
+func TestCreateComments(t *testing.T) {
 
 }
 
 // TEST: 3. Returning an array of all the comments that have been registered against a Github organization
-func TestListComments(t *testing.T){
+func TestListComments(t *testing.T) {
 
 }
 
-// TEST: 4. Soft-deleting all comments associated with a particular organization. We define a "soft delete" to mean that deleted items should not be returned in GET calls, but should remain in the database for emergency retrieval and audit purposes. 
-func TestDeleteComment(t *testing.T){
+// TEST: 4. Soft-deleting all comments associated with a particular organization. We define a "soft delete" to mean that deleted items should not be returned in GET calls, but should remain in the database for emergency retrieval and audit purposes.
+func TestDeleteComment(t *testing.T) {
 
 }
 
-// TEST: 5. Returning an array of members of an organization (with their login, avatar URL, the numbers of followers they have, and the number of people they're following), sorted in descending order by the number of followers. 
-func TestMemberInfo(t *testing.T){
+// TEST: 5. Returning an array of members of an organization (with their login, avatar URL, the numbers of followers they have, and the number of people they're following), sorted in descending order by the number of followers.
+func TestMemberInfo(t *testing.T) {
 
 }
 
@@ -52,7 +72,3 @@ func checkResponseCode(t *testing.T, expected, actual int) {
 		t.Errorf("Expected response code %d. Got %d\n", expected, actual)
 	}
 }
-
-
-
-

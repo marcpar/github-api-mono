@@ -6,9 +6,7 @@ import (
 )
 
 /*
-Everything here
-will be considered
-a block comment
+Environment Variable PostgresUser
 */
 
 type Environment struct {
@@ -41,6 +39,6 @@ func main() {
 		environment.DatabaseHost,
 		environment.DatabaseName)
 
-	a.IntializeModel()
+	IntializeModel(a.DB)
 	a.Run(":8080")
 }
